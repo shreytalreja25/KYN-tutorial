@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+</head>
+<body>
+    <h1>Recipe Cookbook</h1>
+    <div id="root"></div>
+
+    <!-- <p>recipe_cuisine</p> -->
+
+    <!-- <h2>{recipe_name}</h2> -->
+    <script>
+        fetch("https://dummyjson.com/recipes")
+        .then(response=>response.json())
+        .then(data =>{
+            console.log(data);
+            const recipe = data.recipes[0]
+            const recipe_name = data.recipes[0].name
+            console.log(recipe);
+            console.log(recipe_name);
+            // NAME OF THE RECIPE
+            const rootdiv = document.getElementById('root')
+            const newContent = document.createTextNode(recipe_name);
+            console.log(newContent)
+            rootdiv.appendChild(newContent);
+            // NAME OF THE RECIPE
+
+            // cuisine OF THE RECIPE
+            const recipe_cuisine = data.recipes[0].cuisine
+            var cuisine = document.createTextNode(recipe_cuisine);
+
+            // ELEMENT CREATION
+            const cuisine_elem = document.createElement("p")
+            cuisine_elem.textContent(recipe_cuisine);
+            cuisine_elem.style.color = "red";
+            console.log(cuisine)
+            rootdiv.appendChild(cuisine_elem);
+            // cuisine OF THE RECIPE
+
+        })
+    </script>
+</body>
+</html>
